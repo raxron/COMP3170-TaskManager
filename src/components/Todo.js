@@ -1,6 +1,7 @@
 import Todos from "./Todos";
 import { useState } from "react";
 import TodoForm from "./TodoForm";
+import "../styles.css";
 
 export default function Todo() {
   const [taskList, setTaskList] = useState([]);

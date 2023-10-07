@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { nanoid } from "nanoid";
+import "../styles.css";
 
 export default function TodoForm(props) {
   const [task, setTask] = useState("");
@@ -13,7 +14,7 @@ export default function TodoForm(props) {
     const newTask = {
       task: task,
       id: nanoid(),
-      do: false
+      do: false,
     };
     props.addTask(newTask);
     setTask("");

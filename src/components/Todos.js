@@ -1,3 +1,5 @@
+import "../styles.css";
+
 export default function Todos(props) {
   const task = props.task;
 
