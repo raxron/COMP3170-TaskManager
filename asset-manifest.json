@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/week5task/static/css/main.00c2a260.css",
+    "main.js": "/week5task/static/js/main.f2ceef7e.js",
+    "index.html": "/week5task/index.html",
+    "main.00c2a260.css.map": "/week5task/static/css/main.00c2a260.css.map",
+    "main.f2ceef7e.js.map": "/week5task/static/js/main.f2ceef7e.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.00c2a260.css",
+    "static/js/main.f2ceef7e.js"
+  ]
+}
