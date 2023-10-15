@@ -1,30 +1,26 @@
 import "../styles.css";
+import { useContext, useState } from "react";
+import { InventoryContext } from "../data/InventoryContext";
+import Todo from "./Todo";
+export default function Todos() {
+  const { taskList, removeTask, toggleDo } = useContext(InventoryContext);
 
-export default function Todos(props) {
-  const task = props.task;
-
-  function handleDelete() {
-    props.removeTask(task);
+  function handleDelete(task) {
+    removeTask(task);
   }
-  function handleStatusChange() {
-    props.toggleDo(task);
+  function handleStatusChange(task) {
+    toggleDo(task);
   }
   return (
-    <li className="task">
-      <div>
-        <p>
-          <span>
-            <input
-              type="checkbox"
-              onChange={handleStatusChange}
-              value={task.value}
-            />
-            {task.played ? <del>{task.task}</del> : task.task}
-          </span>
-        </p>
-      </div>
-
-      <button onClick={handleDelete}>Remove</button>
-    </li>
+    <ul>
+      {taskList.map((t) => (
+        <Todo
+          key={t.id}
+          task={t}
+          handleDelete={() => handleDelete(t)}
+          handleStatusChange={() => handleStatusChange(t)}
+        />
+      ))}
+    </ul>
   );
 }

@@ -1,46 +1,24 @@
-import Todos from "./Todos";
-import { useState } from "react";
-import TodoForm from "./TodoForm";
+import { useContext } from "react";
 import "../styles.css";
+import { InventoryContext } from "../data/InventoryContext";
 
 export default function Todo() {
-  const [taskList, setTaskList] = useState([]);
+  const { task } = useContext(InventoryContext);
 
-  function addTask(task) {
-    setTaskList([...taskList, task]);
-  }
-
-  function removeTask(track) {
-    const updatedTaskList = taskList.filter(function (task) {
-      return task.id !== track.id;
-    });
-    setTaskList(updatedTaskList);
-  }
-
-  function toggleDo(track) {
-    const updatedTaskList = taskList.map(function (task) {
-      if (task.id === track.id) {
-        task.played = !task.played;
-        return task;
-      } else {
-        return task;
-      }
-    });
-    setTaskList(updatedTaskList);
-  }
   return (
-    <div>
-      <ul>
-        {taskList.map((task) => (
-          <Todos
-            key={task.id}
-            task={task}
-            removeTask={removeTask}
-            toggleDo={toggleDo}
-          />
-        ))}
-      </ul>
-      <TodoForm addTask={addTask} />
-    </div>
+    <li className="task">
+      <div>
+        <p>
+          <span>
+            <input type="checkbox" value={task.value} />
+            {task}
+          </span>
+        </p>
+      </div>
+      <div>
+        <button onClick="">Edit</button>
+        <button onClick="">Remove</button>
+      </div>
+    </li>
   );
 }

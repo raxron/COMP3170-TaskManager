@@ -1,24 +1,16 @@
-import { useState } from "react";
-import { nanoid } from "nanoid";
+import { useState, useContext } from "react";
+import { InventoryContext } from "../data/InventoryContext";
+
 import "../styles.css";
 
-export default function TodoForm(props) {
-  const [task, setTask] = useState("");
+export default function TodoForm() {
+  const { taskList, handleSubmit, handleTask, editing, task } =
+    useContext(InventoryContext);
 
-  function handleTask(e) {
-    setTask(e.target.value);
+  if (editing !== "new") {
+    initialData = taskList.find((t) => t.id === editing);
   }
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    const newTask = {
-      task: task,
-      id: nanoid(),
-      do: false,
-    };
-    props.addTask(newTask);
-    setTask("");
-  }
   return (
     <div className="edit">
       <form onSubmit={handleSubmit}>
